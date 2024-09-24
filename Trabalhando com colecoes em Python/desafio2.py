@@ -27,7 +27,7 @@ numero_conta = 0
 
 
 def criar_usuario(dados_usuarios):
-    #FALTA FAZER A LOGICA DE CONFIRMAR SE JA EXISTE CPF CADASTRADO.
+    
     print("===== Opcao Criando Usuario =====")
 
     cpf = input("Digite o CPF: ")
@@ -76,7 +76,7 @@ def criar_conta_corrente(dados_conta_corrente,dados_usuarios,AGENCIA,numero_cont
 
     return dados_conta_corrente
 
-def exibir_extrato(saldo,extrao):
+def exibir_extrato(saldo,/,*,extrato):
     print("\n================ EXTRATO ================")
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f}")
@@ -95,7 +95,7 @@ def deposito(saldo,extrato):
 
     return saldo,extrato
 
-def saque(saldo,numero_saques,extrato,limite,LIMITE_SAQUES):
+def saque(*,saldo,numero_saques,extrato,limite,LIMITE_SAQUES):
     valor = float(input("Informe o valor do saque: "))
 
     excedeu_saldo = valor > saldo
@@ -126,7 +126,7 @@ def saque(saldo,numero_saques,extrato,limite,LIMITE_SAQUES):
 while True:
 
     print(menu)
-    opcao = int(input("Digite a opcao escolhida: "))
+    opcao = float(input("Digite a opcao escolhida: "))
 
     if opcao == 1:
        saldo,extrato = deposito(saldo,extrato)
